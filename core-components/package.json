@@ -2,9 +2,9 @@
   "name": "core-components",
   "version": "1.0.0",
   "description": "common components",
-  "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "webpack --config build/webpack.config.js"
   },
   "author": "Abhimanyu Kumar",
   "license": "ISC",

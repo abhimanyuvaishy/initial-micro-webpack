@@ -1,6 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const config =('./config.js');
+const config =require('./config');
 const merge = require('webpack-merge').merge;
 //const CopywebpackPlugin = require('copy-webpack-plugin');
 
@@ -62,7 +62,9 @@ const prodConfig = {
 
 const componentKey = process.argv[5];
 
-const webpackConfigs= Object.keys(config).filter(key => component ? (key=== componentKey): true).map((key) => {
+const componentList = Object.keys(config).filter(key => componentKey ? (key === componentKey): true);
+
+const webpackConfigs= componentList.map((key) => {
     const taskConf = require(path.resolve(__dirname, '../', config[key]));
     //const conf = merge(commonConfig, prodConfig, taskConf);
     const conf = merge(prodConfig, taskConf);

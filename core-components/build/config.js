@@ -1,4 +1,4 @@
-module.exports= {
-    'button-comp': '../button/webpack.config.js',
-    'form-comp': '../form/webpack.config.js',
+module.exports = {
+    button: './button/webpack.config.js',
+    form: './form/webpack.config.js',
 }
