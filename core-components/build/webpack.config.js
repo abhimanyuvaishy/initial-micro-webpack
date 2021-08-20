@@ -67,7 +67,9 @@ const webpackConfigs= Object.keys(config).filter(key => component ? (key=== comp
     //const conf = merge(commonConfig, prodConfig, taskConf);
     const conf = merge(prodConfig, taskConf);
     return conf;
-})
+});
+
+module.exports = webpackConfigs;
 
 
 
