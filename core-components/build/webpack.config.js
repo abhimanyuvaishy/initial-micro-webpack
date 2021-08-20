@@ -1,9 +1,11 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const config =('./config.js');
+const merge = require('webpack-merge').merge;
 //const CopywebpackPlugin = require('copy-webpack-plugin');
 
 
-module.exports ={
+const prodConfig = {
     mode:'production',
    entry: path.resolve(__dirname, '../index.js'),
    output:{
@@ -57,4 +59,15 @@ module.exports ={
     ]
 
 }
+
+const componentKey = process.argv[5];
+
+const webpackConfigs= Object.keys(config).filter(key => component ? (key=== componentKey): true).map((key) => {
+    const taskConf = require(path.resolve(__dirname, '../', config[key]));
+    //const conf = merge(commonConfig, prodConfig, taskConf);
+    const conf = merge(prodConfig, taskConf);
+    return conf;
+})
+
+
 
