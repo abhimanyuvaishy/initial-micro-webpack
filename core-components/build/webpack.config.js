@@ -46,11 +46,13 @@ const prodConfig = {
 
     externals:[
         {
-            react: 'umd react',
+            'react': 'umd react',
             'react-dom': 'umd react-dom'
         },
         /bootstrap\/*/,
-        'prop-type'
+        'prop-type',
+        'react',
+        'react-dom'
     ],
     plugins: [
         new MiniCssExtractPlugin({
