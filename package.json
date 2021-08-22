@@ -1,0 +1,22 @@
+{
+  "name": "projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "packages:build": "pushd ./packages-build && node install.js && node install-dev.js && node build.js && popd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhimanyuvaishy/initial-micro-webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhimanyuvaishy/initial-micro-webpack/issues"
+  },
+  "homepage": "https://github.com/abhimanyuvaishy/initial-micro-webpack#readme"
+}
