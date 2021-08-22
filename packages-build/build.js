@@ -11,7 +11,7 @@ function build(count = 0){
         return;
     }
     const modules =packages[count];
-    buildTasks(module, function(){
+    buildTasks(modules, function(){
         build(count + 1);
     });
 }
@@ -32,7 +32,7 @@ function buildTasks(module, callBack){
 
         // build packages.
 
-        const buildCmd= module.buildCmd || 'build:prod';
+        const buildCmd= module.buildCmd || 'build';
 
         cp.spawn(npmCmd, ['run', buildCmd], {env: process.env, cwd : modPath, stdio: 'inherit'})
         .on('close',function(){

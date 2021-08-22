@@ -11,7 +11,7 @@ function install(count = 0){
         return;
     }
     const modules =packages[count];
-    installTasks(module, function(){
+    installTasks(modules, function(){
         install(count + 1);
     });
 }

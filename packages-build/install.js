@@ -5,8 +5,6 @@ const cp = require('child_process');
 const os = require('os');
 const packages= require('./packages.json');
 
-//console.log('packages---', packages);
-
 function install(count = 0){
     if(count >= packages.length){
         return;
@@ -25,7 +23,7 @@ function installTasks(module, callBack){
     if(module.publish){
         
         const modPath = resolve(__dirname, '../', module.sourceDir);
-        console.log('....func exec', modPath);
+
         if(!fs.existsSync(join(modPath,'package.json'))) return;
 
         console.info('Starting npm install for the package', module.name);
