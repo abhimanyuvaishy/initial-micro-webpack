@@ -25,7 +25,10 @@ module.exports ={
     ]
 },
     resolve:{
-        extensions:['.jsx', '.js']
+        extensions:['.jsx', '.js'],
+        alias:{
+            'core-components' : path.resolve(__dirname, '../node_modules', 'core-component')
+        }
     }
 
 }
