@@ -1,13 +1,14 @@
 [
     {
         "name": "core-components",
-        "publish": "true",
-        "publishName":"core-component",
+        "publish": true,
+        "publishName":"core-components",
         "publishTask": "publishCoreComponent",
         "packagePath":"core-components/node-package/",
-        "sourceDir": "core-component",
+        "sourceDir": "core-components",
         "test": "true",
         "lint":"true",
+        "disabledInstall": false,
         "testResultDir" :"core-component/test-result",
         "testCoverageDir" :"core-component/test-coverage"
     }

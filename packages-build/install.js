@@ -5,13 +5,14 @@ const cp = require('child_process');
 const os = require('os');
 const packages= require('./packages.json');
 
+//console.log('packages---', packages);
 
 function install(count = 0){
     if(count >= packages.length){
         return;
     }
     const modules =packages[count];
-    installTasks(module, function(){
+    installTasks(modules, function(){
         install(count + 1);
     });
 }
@@ -21,8 +22,10 @@ if(packages.length){
 }
 
 function installTasks(module, callBack){
-    if(module.publish && !module.disabledInstall){
+    if(module.publish){
+        
         const modPath = resolve(__dirname, '../', module.sourceDir);
+        console.log('....func exec', modPath);
         if(!fs.existsSync(join(modPath,'package.json'))) return;
 
         console.info('Starting npm install for the package', module.name);

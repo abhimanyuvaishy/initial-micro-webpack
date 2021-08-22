@@ -21,7 +21,7 @@ if(packages.length){
 }
 
 function buildTasks(module, callBack){
-    if(module.publish && !module.disabledPublish){
+    if(module.publish){
         const modPath = resolve(__dirname, '../', module.sourceDir);
         if(!fs.existsSync(join(modPath,'package.json'))) return;
 
