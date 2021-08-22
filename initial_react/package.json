@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "initial storybook and React Setup",
   "scripts": {
-    "start": "webpack --config build/webpack.config.js",
+    "build": "webpack --config build/webpack.config.js",
     "test": "test"
   },
   "author": "Abhimanyu Kumar",

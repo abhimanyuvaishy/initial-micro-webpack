@@ -11,5 +11,18 @@
         "disabledInstall": false,
         "testResultDir" :"core-component/test-result",
         "testCoverageDir" :"core-component/test-coverage"
+    },
+    {
+        "name": "initial_react",
+        "publish": true,
+        "publishName":"initial_react",
+        "publishTask": "publishInitialComponent",
+        "packagePath":"initial_react/node-package/",
+        "sourceDir": "initial_react",
+        "test": "true",
+        "lint":"true",
+        "disabledInstall": false,
+        "testResultDir" :"initial_react/test-result",
+        "testCoverageDir" :"initial_react/test-coverage"
     }
 ]
