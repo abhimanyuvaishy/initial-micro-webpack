@@ -6,39 +6,48 @@ const os = require('os');
 const packages= require('./packages.json');
 
 
-function build(count = 0){
+function testPackages(count = 0){
     if(count >= packages.length){
         return;
     }
     const modules =packages[count];
-    buildTasks(module, function(){
-        build(count + 1);
+    testPackagesTasks(module, function(){
+        testPackages(count + 1);
     });
 }
 
 if(packages.length){
-    build();
+    testPackages();
 }
 
-function buildTasks(module, callBack){
-    if(module.publish && !module.disabledPublish){
+function testPackagesTasks(module, callBack){
+    if(module.publish && !module.test){
         const modPath = resolve(__dirname, '../', module.sourceDir);
         if(!fs.existsSync(join(modPath,'package.json'))) return;
 
-        console.info('Starting build for the package', module.name);
+        console.info('Starting test for the package', module.name);
         // npm binary based on OS.
 
         const npmCmd= os.platform().startsWith('win') ? 'npm.cmd' : 'npm';
 
         // build packages.
 
-        const buildCmd= module.buildCmd || 'build:prod';
+        const buildCmd= module.buildCmd || 'test';
 
         cp.spawn(npmCmd, ['run', buildCmd], {env: process.env, cwd : modPath, stdio: 'inherit'})
-        .on('close',function(){
-            callBack();
-        }).on('error', function(){
-            callBack();
+        .on('close',function(code){
+            if(code === 0){
+                callBack();
+            } else {
+                console.error(`Process Exit with code :', ${code}`);
+                process.exit(1);
+            }
+            
+        }).on('error', function(err){
+            callBack(err);
+            console.error(`Test Failed  :', ${module.name}`);
+            console.error(err);
+            process.exit(1);
         });
     }
     else{
